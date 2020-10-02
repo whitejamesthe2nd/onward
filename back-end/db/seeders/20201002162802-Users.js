@@ -11,7 +11,6 @@ function r(o) {
   o.updatedAt = new Date();
   return o;
 }
-
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Users', [
@@ -22,6 +21,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('Users');
+    return queryInterface.bulkDelete('Users',null,{});
   }
 };

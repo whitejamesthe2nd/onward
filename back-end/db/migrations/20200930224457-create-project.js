@@ -10,9 +10,9 @@ module.exports = {
       },
       userId: {
         allowNull:false,
-        unique:true,
+        // unique:true,
         type: Sequelize.INTEGER,
-        references:{model:'Users'}
+        references: { model:'Users'}
       },
       description: {
         type: Sequelize.TEXT

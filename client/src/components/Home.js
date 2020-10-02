@@ -1,4 +1,5 @@
 import React from 'react';
+import NewTaskForm from '../components/NewtaskForm';
 
 function Home(){
 
@@ -7,7 +8,7 @@ function Home(){
         <>
             <div>
                 <h2>Tasks</h2>
-                {/* {To be implmented a list of tasks for user} */}
+                {<NewTaskForm />}
             </div>
             <div>
                 <h2>Projects</h2>
