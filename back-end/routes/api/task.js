@@ -6,15 +6,17 @@ const router = express.Router();
 
 // To get your tasks
 router.get('/', asyncHandler( async(req,res)=>{
-    const {userId} = req.body;
-    const tasks = await Task.findAll({were:{userId:userId}});
+    // const {userId} = req.body;
+    // const tasks = await Task.findAll({were:{userId:userId}});
+    console.log('Task get route');
+    const tasks = await Task.findAll();
     res.json(tasks);
 }));
 
 // To create your task
 router.post('/', asyncHandler(async (req,res)=>{
-    const {userId, projectId, description} = req.body;
-    let newTask = await Task.create({userId:userId,projectId:projectId, description:description});
+    const {userId, description} = req.body;
+    let newTask = await Task.create({userId:userId,projectId:1, description:description});
     res.json(newTask);
 }))
 

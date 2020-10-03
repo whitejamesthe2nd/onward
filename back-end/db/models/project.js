@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   Project.associate = function(models) {
     // associations can be defined here
     // Project.belongsTo(models.User,{foreignKey:'userId'});
-    Project.hasMany(models.Task, {foreignKey:'taskId'});
+    Project.hasMany(models.Task, {foreignKey:'projectId'});
   };
   return Project;
 };
