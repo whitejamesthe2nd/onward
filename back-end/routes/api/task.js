@@ -15,8 +15,8 @@ router.get('/', asyncHandler( async(req,res)=>{
 
 // To create your task
 router.post('/', asyncHandler(async (req,res)=>{
-    const {userId, projectId, description} = req.body;
-    let newTask = await Task.create({userId:userId,projectId:projectId, description:description});
+    const {userId, description} = req.body;
+    let newTask = await Task.create({userId:userId,projectId:1, description:description});
     res.json(newTask);
 }))
 

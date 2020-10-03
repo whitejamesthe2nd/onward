@@ -69,27 +69,29 @@ export const getTasks = () => async dispatch => {
 //   throw res;
 // };
 
-// export const createPokemon = (pokemon) => async dispatch => {
-//   const res = await fetch('/api/pokemon/', {
-//     method: "post",
-//     headers: {
-//       "Content-Type": "application/json"
-//     },
-//     body: JSON.stringify(pokemon)
-//   });
-//   if (res.ok) {
-//     dispatch(getPokemon());
-//     return res;
+export const createTask = (obj) => async dispatch => {
+  const res = await fetch('/api/task/', {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(obj),
+  });
+  if (res.ok) {
+    dispatch(getTasks());
+    return res;
+    }
 //   } else if (res.status === 401) {
 //     dispatch(removeUser());
 //     return res;
-//   } else if (res.status === 422) {
+//   }
+//      if (res.status === 422) {
 //     const { errors } = await res.json();
-//     dispatch(formErrors(errors));
+//     // dispatch(formErrors(errors));
 //     return res;
 //   }
-//   throw res;
-// };
+    throw res;
+};
 
 const initialState = {
   tasks: [],

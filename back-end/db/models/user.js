@@ -59,8 +59,8 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = function(models) {
     // User.hasMany(models.Task, {foreignKey: 'userId'});
-    User.hasMany(models.Project, {foreignKey:'userId'});
-    User.belongsTo(models.Organization, {foreignKey: 'userId'});
+    // User.hasMany(models.Project, {foreignKey:'userId'});
+    // User.belongsTo(models.Organization, {foreignKey: 'userId'});
 
 
   };
