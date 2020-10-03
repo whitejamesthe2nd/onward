@@ -3,7 +3,7 @@ OnwardToCompletion is gonna be an asana clone if I have enough time I am gonna a
 ### 1. Hosting on Heroku
 
 ### 2. Account Sign-up, Login, Logout and Guest User
- * Users Can logi/Log out
+ * Users Can login/Log out
  * Users can basically only use the site when logged in with features such as task management and project tracking.
  * A demo user for users to take the site fro a test drive.
 

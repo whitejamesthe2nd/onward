@@ -1,9 +1,11 @@
 import { createStore, compose, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
+import reducer from './onward';
 
-import auth from './auth'
+import auth from './auth';
 const rootReducer = combineReducers({
-    auth
+    auth,
+    reducer
 });
 
 let storeEnhancer;
