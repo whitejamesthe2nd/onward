@@ -1,14 +1,21 @@
 // import { removeUser } from './authentication';
 
-const LOAD = "api/task/LOAD";
+const LOAD_PROJECTS = "api/task/LOAD_PROJECTS";
+const LOAD_TASKS = "api/task/LOAD_TASKS";
 const SET_CURRENT = "pokedex/pokemon/SET_CURRENT";
 const LOAD_TYPES = "pokedex/pokemon/LOAD_TYPES";
 const FORM_ERRORS = "pokedex/pokemon/FORM_ERRORS";
 
-const load = (tasks) => {
+const loadTasks = (tasks) => {
   return {
-    type: LOAD,
+    type: LOAD_TASKS,
     tasks
+  };
+};
+const loadProjects = (projects) => {
+  return {
+    type: LOAD_PROJECTS,
+    projects
   };
 };
 
@@ -49,9 +56,11 @@ export const getTasks = () => async dispatch => {
   console.log(res);
   if (res.ok) {
     const data = await res.json();
+    const {tasks, projects} = data;
     // console.log(data);
     // console.log(load(data));
-    dispatch(load(data));
+    dispatch(loadTasks(tasks));
+    dispatch(loadProjects(projects));
     // return data;
   }
   throw res;
@@ -92,17 +101,43 @@ export const createTask = (obj) => async dispatch => {
 //   }
     throw res;
 };
+export const createProject = (obj) => async dispatch => {
+  const res = await fetch('/api/project/', {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(obj),
+  });
+  if (res.ok) {
+    dispatch(getTasks());
+    return res;
+    }
+//   } else if (res.status === 401) {
+//     dispatch(removeUser());
+//     return res;
+//   }
+//      if (res.status === 422) {
+//     const { errors } = await res.json();
+//     // dispatch(formErrors(errors));
+//     return res;
+//   }
+    throw res;
+};
 
 const initialState = {
   tasks: [],
-  project:{},
+  projects:[],
   Orgization:{}
 }
 
 export default function reducer(state=initialState, action) {
   switch (action.type) {
-    case LOAD:
+    case LOAD_TASKS:
       return { ...state, tasks: action.tasks };
+
+    case LOAD_PROJECTS:
+      return { ...state, projects: action.projects };
 
     default:
       return state;

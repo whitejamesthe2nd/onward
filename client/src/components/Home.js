@@ -4,24 +4,10 @@ import {getTasks } from '../store/onward';
 import { useDispatch, useSelector } from "react-redux";
 import Task from './Task';
 import { useEffect } from 'react';
-// function Home(){
+import NewProjectForm from "./NewProjectForm";
+import Project from './Project';
 
 
-//     return(
-        // <>
-        //     <div>
-        //         <h2>Tasks</h2;
-        //         {<NewTaskForm />}
-        //     </div>
-        //     <div>
-        //         <h2>Projects</h2>
-        //         {/* {to be implemented a list of Projects for user} */}
-        //     </div>
-        // </>
-//     )
-// }
-
-// export default Home;
 const  Home = () =>{
     const data = useSelector(state=>state.reducer);
     const dispatch = useDispatch();
@@ -30,7 +16,10 @@ const  Home = () =>{
 
     },[dispatch]);
     // console.log(data);
-        return (
+    if(!data.projects){
+        dispatch(getTasks);
+    }
+    return (
             <>
             <div>
                 <h2>Tasks</h2>
@@ -39,7 +28,8 @@ const  Home = () =>{
             </div>
             <div>
                 <h2>Projects</h2>
-                {/* {to be implemented a list of Projects for user} */}
+                {data.projects.map(project => <Project description={project.description} name={project.name}/>)}
+                <NewProjectForm />
             </div>
         </>
         );
