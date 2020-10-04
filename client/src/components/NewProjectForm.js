@@ -1,6 +1,7 @@
 // import React, { Component } from 'react';
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import {createProject} from '../store/onward';
 
 function NewProjectForm (){
     const [description, setDescription] = useState();
@@ -9,7 +10,7 @@ function NewProjectForm (){
 
     const handleSubmit =  (e) =>{
         e.preventDefault();
-        // dispatch(createProject(description));
+        dispatch(createProject({name:name, description:description, userId:1}));
         // dispatch(createProject(description));
     }
 

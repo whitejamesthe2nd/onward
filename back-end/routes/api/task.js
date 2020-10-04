@@ -1,6 +1,8 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 const {Task} = require('../../db/models');
+const {Project} = require('../../db/models');
+
 
 const router = express.Router();
 
@@ -10,7 +12,9 @@ router.get('/', asyncHandler( async(req,res)=>{
     // const tasks = await Task.findAll({were:{userId:userId}});
     console.log('Task get route');
     const tasks = await Task.findAll();
-    res.json(tasks);
+    const projects = await Project.findAll();
+    const data = { tasks:tasks, projects:projects};
+    res.json(data);
 }));
 
 // To create your task
