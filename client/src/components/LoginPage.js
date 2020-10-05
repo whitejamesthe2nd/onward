@@ -19,7 +19,7 @@ import { login } from '../store/auth';
     if(currentId) return <Redirect to="/"/>
 
     return (
-        <div className="background">
+        <div className="background size">
             <div className="adjust">
                 <div className="ui middle aligned center aligned grid">
                     <div className="column">

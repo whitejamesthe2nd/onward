@@ -26,9 +26,9 @@ router.post('/', asyncHandler(async (req,res)=>{
 
 // To delete your tasks
 // ToDo set up propper id handling
-router.delete('/:id', asyncHandler( async (req,res)=>{
+router.delete('/', asyncHandler( async (req,res)=>{
     const {taskId} = req.body;
-    await Task.delete({where:{id:taskId}}); // place Holder.
+    await Task.destroy({where:{id:taskId}}); // place Holder.
     res.json({message: 'Sucess'});
 }))
 

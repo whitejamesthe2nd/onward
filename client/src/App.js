@@ -12,25 +12,16 @@ function App() {
 
   return (
     <BrowserRouter>
-        <nav>
-            <ul>
-                <li><NavLink to="/" activeClass="active">Home</NavLink></li>
-                <li><NavLink to="/login" activeClass="active">Login</NavLink></li>
-                <li><NavLink to="/newTask" activeClass="active">New Task</NavLink></li>
-                <li><NavLink to="/newProject" activeClass="active">New Project</NavLink></li>
-                <li><NavLink to="/newOrganization" activeClass="active">New Organization</NavLink></li>
-            </ul>
-        </nav>
-        <Switch>
+    <div class='navBar'>
+            <nav class='horizontal'>
+                    <div><NavLink to="/" className='color' activeClass="active">Home</NavLink></div>
+                    <div><NavLink to="/login" className='color' activeClass="active">Login</NavLink></div>
+                    <div><NavLink to="/newOrganization" className='color' activeClass="active">New Organization</NavLink></div>
+            </nav>
+    </div>
+            <Switch>
             <Route path="/login">
                     <LoginPage />
-            </Route>
-
-            <Route path="/newTask">
-                <NewTaskForm />
-            </Route>
-            <Route path="/newProject">
-                <NewProjectForm />
             </Route>
             <Route path="/newOrganization">
                 <NewOrgainzationForm />

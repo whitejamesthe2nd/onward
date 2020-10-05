@@ -1,1 +1,59 @@
 /* TODO Add site wide styles */
+body{
+    background-color: violet;
+    font-size: 16px;
+}
+.size{
+    max-width: 400px;
+    display:grid;
+    /* justify-content: center; */
+}
+.Vertical{
+    display: grid;
+    flex-direction: column;
+}
+.Home{
+    display:grid;
+    justify-content: center;
+}
+
+.center-me{
+    display: grid;
+    justify-content: center;
+    /* background-color:; */
+    /* padding:; */
+    /* padding-bottom: 0px; */
+    margin-bottom: 1px;
+    border-radius: 3px;
+
+}
+.rows{
+    border: rgba(110, 110, 110, 0.568) solid;
+    background-color: lightgray;
+    padding: .5rem;
+    border-radius: 3px;
+    width: 700px;
+}
+.header{
+    font-size: 3em;
+}
+.tasks{
+    align-self: center;
+}
+.inline{
+    display: inline;
+}
+.horizontal{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.navBar{
+    background-color: rgb(153, 1, 153);
+}
+.color{
+    color: black;
+    background-color: white;
+    border-radius: 3px;
+    margin:10px
+}
