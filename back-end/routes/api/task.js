@@ -1,19 +1,21 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
-const {Task} = require('../../db/models');
-const {Project} = require('../../db/models');
+const {Task,Project,Organization} = require('../../db/models');
+// const {Project} = require('../../db/models');
 
 
 const router = express.Router();
 
 // To get your tasks
-router.get('/', asyncHandler( async(req,res)=>{
+router.get('/:id(\\d+)', asyncHandler( async(req,res)=>{
     // const {userId} = req.body;
     // const tasks = await Task.findAll({were:{userId:userId}});
+    const userId = parseInt(req.params.id);
     console.log('Task get route');
-    const tasks = await Task.findAll();
-    const projects = await Project.findAll();
-    const data = { tasks:tasks, projects:projects};
+    const tasks = await Task.findAll({where:{userId:userId}});
+    const projects = await Project.findAll({where:{userId:userId}});
+    const organization = await Organization.findAll({where:{userId:userId}})
+    const data = { tasks:tasks, projects:projects, organization:organization};
     res.json(data);
 }));
 

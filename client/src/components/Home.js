@@ -10,9 +10,10 @@ import Project from './Project';
 
 const  Home = () =>{
     const data = useSelector(state=>state.reducer);
+    const auth = useSelector(state=>state.auth);
     const dispatch = useDispatch();
     useEffect(()=>{
-        dispatch(getTasks());
+        dispatch(getTasks(auth.id));
 
     },[dispatch]);
     // console.log(data);

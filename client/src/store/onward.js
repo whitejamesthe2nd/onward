@@ -2,7 +2,7 @@
 
 const LOAD_PROJECTS = "api/task/LOAD_PROJECTS";
 const LOAD_TASKS = "api/task/LOAD_TASKS";
-const SET_CURRENT = "pokedex/pokemon/SET_CURRENT";
+const LOAD_ORG = "api/task/LOAD_ORG";
 
 const loadTasks = (tasks) => {
   return {
@@ -14,6 +14,12 @@ const loadProjects = (projects) => {
   return {
     type: LOAD_PROJECTS,
     projects
+  };
+};
+const loadOrg = (orgs) => {
+  return {
+    type: LOAD_ORG,
+    orgs
   };
 };
 
@@ -49,16 +55,18 @@ const loadProjects = (projects) => {
 //   throw res;
 // };
 
-export const getTasks = () => async dispatch => {
-  const res = await fetch('/api/task');
+export const getTasks = (userId) => async dispatch => {
+// const obj = {userId:userId}
+  const res = await fetch(`/api/task/${userId}`);
   console.log(res);
   if (res.ok) {
     const data = await res.json();
-    const {tasks, projects} = data;
+    const {tasks, projects, organization} = data;
     // console.log(data);
     // console.log(load(data));
     dispatch(loadTasks(tasks));
     dispatch(loadProjects(projects));
+    dispatch(loadOrg(organization));
     // return data;
   }
   throw res;
@@ -110,7 +118,7 @@ export const deleteTask = (target)=> async dispatch => {
 const initialState = {
   tasks: [],
   projects:[],
-  Orgization:{}
+  orgs:[]
 }
 
 export default function reducer(state=initialState, action) {
@@ -120,6 +128,8 @@ export default function reducer(state=initialState, action) {
 
     case LOAD_PROJECTS:
       return { ...state, projects: action.projects };
+    case LOAD_ORG:
+      return { ...state, orgs: action.orgs };
 
     default:
       return state;

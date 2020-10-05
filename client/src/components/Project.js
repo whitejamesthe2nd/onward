@@ -9,13 +9,13 @@ function Task(props) {
       <div class='rows'>
         <BrowserRouter>
         <>
-          <div class='inline'><NavLink to='/projectTasks' value={props.id}>{props.name}</NavLink></div>
+          <div class='inline'><a href='/projectTasks' value={props.id}>{props.name}</a></div>
           <div class='inline'>:  {props.description}</div>
         </>
         <Switch>
-          <Route path='/projectTasks'>
-            {/* <ProjectTasks /> */}
-          </Route>
+           {/* <Route path='/projectTasks'>
+            <ProjectTasks />
+          </Route> */}
         </Switch>
         </BrowserRouter>
       </div>

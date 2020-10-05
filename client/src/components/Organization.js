@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 
-function NewOrganizationForm (){
+function NewOrganizationForm (props){
     const [description, setDescription] = useState();
     const [name, setName] = useState();
     const dispatch = useDispatch();
@@ -14,11 +14,15 @@ function NewOrganizationForm (){
 
 
     return(
-        <form onSubmit={handleSubmit}>
-            <input type='text' placeholder='Organization Name' onChange={(e) => setName(e.target.value)}/>
-            <input type='text' placeholder='Description'onChange={(e) => setDescription(e.target.value)}/>
-            <button type='submit'>Create Organization</button>
-        </form>
+        <>
+        <h1>{props.name}</h1>
+        <p>{props.description}</p>
+        </>
+        // <form onSubmit={handleSubmit}>
+        //     <input type='text' placeholder='Organization Name' onChange={(e) => setName(e.target.value)}/>
+        //     <input type='text' placeholder='Description'onChange={(e) => setDescription(e.target.value)}/>
+        //     <button type='submit'>Create Organization</button>
+        // </form>
     )
 }
 export default NewOrganizationForm;
