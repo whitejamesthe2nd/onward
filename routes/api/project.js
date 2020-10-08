@@ -20,9 +20,10 @@ router.post('/', asyncHandler(async (req,res)=>{
 
 // To delete your project
 // ToDo set up propper id handling
-router.delete('/:id', asyncHandler( async (req,res)=>{
+router.delete('/', asyncHandler( async (req,res)=>{
     const {projectId} = req.body;
-    await Project.delete({where:{id:projectId}}); // place Holder.
+    await Project.destroy({where:{id:projectId}});
+    res.json({message:'success'})
 }))
 
 module.exports = router;

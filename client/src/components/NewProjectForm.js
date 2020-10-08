@@ -7,10 +7,12 @@ function NewProjectForm (){
     const [description, setDescription] = useState();
     const [name, setName] = useState();
     const dispatch = useDispatch();
+    const auth = useSelector(state => state.auth);
+
 
     const handleSubmit =  (e) =>{
         e.preventDefault();
-        dispatch(createProject({name:name, description:description, userId:1}));
+        dispatch(createProject({name:name, description:description, userId:auth.id}));
         // dispatch(createProject(description));
     }
 

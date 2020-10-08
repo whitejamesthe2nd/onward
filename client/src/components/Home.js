@@ -30,7 +30,7 @@ const  Home = () =>{
             </div>
             <div>
                 <h2 class='center-me header'>Projects</h2>
-                {data.projects.map(project => <Project description={project.description} class='project' name={project.name}/>)}
+                {data.projects.map(project => <Project description={project.description} class='project' id={project.id} name={project.name}/>)}
                 <NewProjectForm />
             </div>
         </>

@@ -6,8 +6,10 @@ const  {deleteTask} = require('../store/onward');
 function Task(props) {
     console.log(props);
     const dispatch = useDispatch();
+    const auth = useSelector(state=>state.auth);
     const handleClick = (e)=>{
-      dispatch(deleteTask(e.target.value));
+      const obj = {target: e.target.value, userId:auth.id}
+      dispatch(deleteTask(obj));
 
     }
     return (

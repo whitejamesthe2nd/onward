@@ -74,6 +74,7 @@ export const getTasks = (userId) => async dispatch => {
 
 
 export const createTask = (obj) => async dispatch => {
+  const {userId} = obj;
   const res = await fetch('/api/task/', {
     method: "post",
     headers: {
@@ -82,12 +83,13 @@ export const createTask = (obj) => async dispatch => {
     body: JSON.stringify(obj),
   });
   if (res.ok) {
-    dispatch(getTasks());
+    dispatch(getTasks(userId));
     return res;
     }
     throw res;
 };
 export const createProject = (obj) => async dispatch => {
+  const {userId} = obj;
   const res = await fetch('/api/project/', {
     method: "post",
     headers: {
@@ -96,12 +98,13 @@ export const createProject = (obj) => async dispatch => {
     body: JSON.stringify(obj),
   });
   if (res.ok) {
-    dispatch(getTasks());
+    dispatch(getTasks(userId));
     return res;
     }
     throw res;
 };
-export const deleteTask = (target)=> async dispatch => {
+export const deleteTask = (recieve)=> async dispatch => {
+  const {target, userId} = recieve;
   let obj = {taskId:target};
   const res = await fetch('/api/task/', {
     method: "delete",
@@ -111,7 +114,23 @@ export const deleteTask = (target)=> async dispatch => {
     body: JSON.stringify(obj),
   });
   if (res.ok) {
-    dispatch(getTasks());
+    dispatch(getTasks(userId));
+    return res;
+    }
+}
+export const deleteProject = (recieve)=> async dispatch => {
+  const {target, userId} = recieve;
+  console.log('Helllooooo');
+  let obj = {projectId:target};
+  const res = await fetch('/api/project/', {
+    method: "delete",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(obj),
+  });
+  if (res.ok) {
+    dispatch(getTasks(userId));
     return res;
     }
 }
